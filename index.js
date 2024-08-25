@@ -54,6 +54,20 @@ app.post('/bfhl', (req, res) => {
   });
 });
 
+// GET route to return hardcoded JSON response
+app.get('/bfhl', (req, res) => {
+  try {
+    return res.status(200).json({
+      operation_code: 1,
+    });
+  } catch (error) {
+    console.error('Error processing request:', error);
+    return res.status(500).json({
+      message: 'Server error, please try again later.',
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
